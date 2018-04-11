@@ -5,6 +5,30 @@ if SERVER then
    resource.AddFile("materials/vgui/ttt/sprite_surv.vmt")
 end
 
+-- important to add roles with this function,
+-- because it does more than just access the array ! e.g. updating other arrays
+AddCustomRole("SURVIVALIST", { -- first param is access for ROLES array => ROLES["SURVIVALIST"] or ROLES["JESTER"]
+	color = Color(255, 127, 80, 255), -- ...
+	dkcolor = Color(255, 105, 51, 255), -- ...
+	bgcolor = Color(255, 165, 0, 200), -- ...
+	name = "survivalist", -- just a unique name for the script to determine
+	printName = "Survivalist", -- The text that is printed to the player, e.g. in role alert
+	abbr = "surv", -- abbreviation
+	shop = true, -- can the role access the [C] shop ? -> credits should be set
+	team = TEAM_INNO, -- the team name: roles with same team name are working together
+	defaultEquipment = SPECIAL_EQUIPMENT, -- here you can set up your own default equipment
+    radarColor = Color(150, 150, 150), -- color if someone is using the radar
+    surviveBonus = 0, -- bonus multiplier for every survive while another player was killed
+    scoreKillsMultiplier = 1, -- multiplier for kill of player of another team
+    scoreTeamKillsMultiplier = -8 -- multiplier for teamkill
+}, {
+    pct = 0.13, -- necessary: percentage of getting this role selected (per player)
+    maximum = 2, -- maximum amount of roles in a round
+    minPlayers = 2, -- minimum amount of players until this role is able to get selected
+    credits = 1, -- the starting credits of a specific role
+    togglable = true -- option to toggle a role for a client if possible (F1 menu)
+})
+
 -- if sync of roles has finished
 hook.Add("TTT2_FinishedSync", "SurvInitT", function(first)
 	if CLIENT and first then -- just on client and first init !
@@ -39,43 +63,4 @@ hook.Add("TTT2_FinishedSync", "SurvInitT", function(first)
 	end
 end)
 
--- optional
-CreateClientConVar("ttt_avoid_survivalist", "0", true, true) -- should be "ttt_avoid_" .. name ; if enabled: option to disable role if possible will be enabled
-
-if SERVER then
-
-	-- add CVars ! necessary for calculation
-	CreateConVar("ttt_survivalist_pct", "0.13", FCVAR_NOTIFY)  -- should be "ttt_" .. name .. "_pct"
-	CreateConVar("ttt_survivalist_max", "2")                   -- should be "ttt_" .. name .. "_max"
-	CreateConVar("ttt_survivalist_min_players", "2")           -- should be "ttt_" .. name .. "_min_players"
-
-    CreateConVar("ttt_survivalist_credits_starting", "1") -- needed if role is able to access the [C] shop
-
-	-- necessary to init roles in this way, because we need to wait until the ROLES array is initialized 
-	-- and every important function works properly
-	hook.Add("TTT2_RoleInit", "AddSurvRole", function() -- unique hook identifier please
-		if not ROLES["SURVIVALIST"] then
-
-			-- important to add roles with this function,
-			-- because it does more than just access the array ! e.g. updating other arrays
-			AddCustomRole("SURVIVALIST", { -- first param is access for ROLES array => ROLES["SURVIVALIST"] or ROLES["JESTER"]
-				color = Color(255, 127, 80, 255), -- ...
-				dkcolor = Color(255, 105, 51, 255), -- ...
-				bgcolor = Color(255, 165, 0, 200), -- ...
-				name = "survivalist", -- just a unique name for the script to determine
-				printName = "Survivalist", -- The text that is printed to the player, e.g. in role alert
-				abbr = "surv", -- abbreviation
-				shop = true, -- can the role access the [C] shop ? -> credits should be set
-				team = TEAM_INNO, -- the team name: roles with same team name are working together
-				moreThanOne = true, -- this should always be false
-				defaultEquipment = SPECIAL_EQUIPMENT, -- here you can set up your own default equipment
-                radarColor = Color(150, 150, 150), -- color if someone is using the radar
-                surviveBonus = 0, -- bonus multiplier for every survive while another player was killed
-                scoreKillsMultiplier = 1, -- multiplier for kill of player of another team
-                scoreTeamKillsMultiplier = -8 -- multiplier for teamkill
-			})
-		end
-	end)
-    
-    -- nothing special, just a inno that is able to access the [C] shop
-end
+-- nothing special, just a inno that is able to access the [C] shop
