@@ -41,6 +41,7 @@ hook.Add("TTT2_FinishedSync", "SurvInitT", function(first)
             Try to survive and protect your mates if possible!]])
 		LANG.AddToLanguage("English", "body_found_" .. ROLES.SURVIVALIST.abbr, "This was a Survivalist...")
 		LANG.AddToLanguage("English", "search_role_" .. ROLES.SURVIVALIST.abbr, "This person was a Survivalist!")
+		LANG.AddToLanguage("English", "target_" .. ROLES.SURVIVALIST.name, "Survivalist")
 	    
 	    -- optional for toggling whether player can avoid the role
 		LANG.AddToLanguage("English", "set_avoid_" .. ROLES.SURVIVALIST.abbr, "Avoid being selected as Survivalist!")
@@ -56,6 +57,7 @@ hook.Add("TTT2_FinishedSync", "SurvInitT", function(first)
             Versuche zu überleben und beschütze dein Team, wenn es möglich sein sollte!]])
 		LANG.AddToLanguage("Deutsch", "body_found_" .. ROLES.SURVIVALIST.abbr, "Er war ein Überlebenskünstler...")
 		LANG.AddToLanguage("Deutsch", "search_role_" .. ROLES.SURVIVALIST.abbr, "Diese Person war ein Überlebenskünstler!")
+		LANG.AddToLanguage("Deutsch", "target_" .. ROLES.SURVIVALIST.name, "Überlebenskünstler")
 	    
 		LANG.AddToLanguage("Deutsch", "set_avoid_" .. ROLES.SURVIVALIST.abbr, "Vermeide als Überlebenskünstler ausgewählt zu werden!")
 		LANG.AddToLanguage("Deutsch", "set_avoid_" .. ROLES.SURVIVALIST.abbr .. "_tip", 
