@@ -30,7 +30,7 @@ AddCustomRole("SURVIVALIST", { -- first param is access for ROLES array => ROLES
 })
 
 -- if sync of roles has finished
-hook.Add("TTT2_FinishedSync", "SurvInitT", function(first)
+hook.Add("TTT2_FinishedSync", "SurvInitT", function(ply, first)
 	if CLIENT and first then -- just on client and first init !
 
 		-- setup here is not necessary but if you want to access the role data, you need to start here
