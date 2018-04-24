@@ -22,9 +22,9 @@ AddCustomRole("SURVIVALIST", { -- first param is access for ROLES array => ROLES
     scoreKillsMultiplier = 1, -- multiplier for kill of player of another team
     scoreTeamKillsMultiplier = -8 -- multiplier for teamkill
 }, {
-    pct = 0.13, -- necessary: percentage of getting this role selected (per player)
+    pct = 0.15, -- necessary: percentage of getting this role selected (per player)
     maximum = 2, -- maximum amount of roles in a round
-    minPlayers = 2, -- minimum amount of players until this role is able to get selected
+    minPlayers = 7, -- minimum amount of players until this role is able to get selected
     credits = 1, -- the starting credits of a specific role
     togglable = true -- option to toggle a role for a client if possible (F1 menu)
 })
