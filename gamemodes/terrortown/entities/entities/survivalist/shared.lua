@@ -42,6 +42,8 @@ hook.Add("TTT2_FinishedSync", "SurvInitT", function(ply, first)
 		LANG.AddToLanguage("English", "body_found_" .. ROLES.SURVIVALIST.abbr, "This was a Survivalist...")
 		LANG.AddToLanguage("English", "search_role_" .. ROLES.SURVIVALIST.abbr, "This person was a Survivalist!")
 		LANG.AddToLanguage("English", "target_" .. ROLES.SURVIVALIST.name, "Survivalist")
+        LANG.AddToLanguage("English", "ttt2_desc_" .. ROLES.SURVIVALIST.name, [[The Survivalist is a better innocent, because he is able to access his own ([C]) shop.
+Try to protect the innocents!]])
 	    
 	    -- optional for toggling whether player can avoid the role
 		LANG.AddToLanguage("English", "set_avoid_" .. ROLES.SURVIVALIST.abbr, "Avoid being selected as Survivalist!")
@@ -58,6 +60,8 @@ hook.Add("TTT2_FinishedSync", "SurvInitT", function(ply, first)
 		LANG.AddToLanguage("Deutsch", "body_found_" .. ROLES.SURVIVALIST.abbr, "Er war ein Überlebenskünstler...")
 		LANG.AddToLanguage("Deutsch", "search_role_" .. ROLES.SURVIVALIST.abbr, "Diese Person war ein Überlebenskünstler!")
 		LANG.AddToLanguage("Deutsch", "target_" .. ROLES.SURVIVALIST.name, "Überlebenskünstler")
+        LANG.AddToLanguage("Deutsch", "ttt2_desc_" .. ROLES.SURVIVALIST.name, [[Der Überlebenskünstler ist ein besserer Unschuldiger (oder sogar ein besserer Detektiv), denn er hat seinen eigenen ([C]) Shop.
+Versuche, die Unschuldigen zu beschützen!]])
 	    
 		LANG.AddToLanguage("Deutsch", "set_avoid_" .. ROLES.SURVIVALIST.abbr, "Vermeide als Überlebenskünstler ausgewählt zu werden!")
 		LANG.AddToLanguage("Deutsch", "set_avoid_" .. ROLES.SURVIVALIST.abbr .. "_tip", 
