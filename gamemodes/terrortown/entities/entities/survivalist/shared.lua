@@ -72,17 +72,11 @@ if CLIENT then
 	
 	-- modify roles table of rolesetup addon
 	hook.Add("TTTAModifyRolesTable", "ModifyRoleSurvToInno", function(rolesTable)
-		local tmp = {}
-		
-		for _, v in pairs(ROLES) do
-			tmp[v.index] = {}
+		for role in pairs(rolesTable) do
+			if role == ROLES.SURVIVALIST.index then
+				roles[ROLE_INNOCENT] = roles[ROLE_INNOCENT] + roles[ROLES.SURVIVALIST.index]
+			end
 		end
-		
-		for role, ply in pairs(rolesTable) do
-			table.insert(tmp[(role == ROLES.SURVIVALIST.index and ROLES.INNOCENT.index or role)], ply)
-		end
-		
-		rolesTable = tmp
 	end)
 end
 
