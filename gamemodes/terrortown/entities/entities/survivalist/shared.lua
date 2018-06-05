@@ -5,30 +5,32 @@ if SERVER then
    resource.AddFile("materials/vgui/ttt/sprite_surv.vmt")
 end
 
--- important to add roles with this function,
--- because it does more than just access the array ! e.g. updating other arrays
-AddCustomRole("SURVIVALIST", { -- first param is access for ROLES array => ROLES["SURVIVALIST"] or ROLES["JESTER"]
-	color = Color(255, 127, 80, 255), -- ...
-	dkcolor = Color(255, 105, 51, 255), -- ...
-	bgcolor = Color(255, 165, 0, 200), -- ...
-	name = "survivalist", -- just a unique name for the script to determine
-	printName = "Survivalist", -- The text that is printed to the player, e.g. in role alert
-	abbr = "surv", -- abbreviation
-	shop = true, -- can the role access the [C] shop ? -> credits should be set
-	team = TEAM_INNO, -- the team name: roles with same team name are working together
-	defaultEquipment = SPECIAL_EQUIPMENT, -- here you can set up your own default equipment
-    radarColor = Color(150, 150, 150), -- color if someone is using the radar
-    surviveBonus = 0, -- bonus multiplier for every survive while another player was killed
-    scoreKillsMultiplier = 1, -- multiplier for kill of player of another team
-    scoreTeamKillsMultiplier = -8 -- multiplier for teamkill
-}, {
-    pct = 0.15, -- necessary: percentage of getting this role selected (per player)
-    maximum = 2, -- maximum amount of roles in a round
-    minPlayers = 7, -- minimum amount of players until this role is able to get selected
-    credits = 1, -- the starting credits of a specific role
-    togglable = true, -- option to toggle a role for a client if possible (F1 menu)
-	shopFallback = SHOP_FALLBACK_DETECTIVE
-})
+hook.Add("Initialize", "TTT2InitCRoleSurv", function()
+	-- important to add roles with this function,
+	-- because it does more than just access the array ! e.g. updating other arrays
+	AddCustomRole("SURVIVALIST", { -- first param is access for ROLES array => ROLES["SURVIVALIST"] or ROLES["JESTER"]
+		color = Color(255, 127, 80, 255), -- ...
+		dkcolor = Color(255, 105, 51, 255), -- ...
+		bgcolor = Color(255, 165, 0, 200), -- ...
+		name = "survivalist", -- just a unique name for the script to determine
+		printName = "Survivalist", -- The text that is printed to the player, e.g. in role alert
+		abbr = "surv", -- abbreviation
+		shop = true, -- can the role access the [C] shop ? -> credits should be set
+		team = TEAM_INNO, -- the team name: roles with same team name are working together
+		defaultEquipment = SPECIAL_EQUIPMENT, -- here you can set up your own default equipment
+		radarColor = Color(150, 150, 150), -- color if someone is using the radar
+		surviveBonus = 0, -- bonus multiplier for every survive while another player was killed
+		scoreKillsMultiplier = 1, -- multiplier for kill of player of another team
+		scoreTeamKillsMultiplier = -8 -- multiplier for teamkill
+	}, {
+		pct = 0.15, -- necessary: percentage of getting this role selected (per player)
+		maximum = 2, -- maximum amount of roles in a round
+		minPlayers = 7, -- minimum amount of players until this role is able to get selected
+		credits = 1, -- the starting credits of a specific role
+		togglable = true, -- option to toggle a role for a client if possible (F1 menu)
+		shopFallback = SHOP_FALLBACK_DETECTIVE
+	})
+end)
 
 if CLIENT then
 	-- if sync of roles has finished
