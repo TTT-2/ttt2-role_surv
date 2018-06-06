@@ -72,15 +72,6 @@ if CLIENT then
 				[[Aktivieren, um beim Server anzufragen, nicht als Überlebenskünstler ausgewählt zu werden. Das bedeuted nicht, dass du öfter Traitor wirst!]])
 		end
 	end)
-	
-	-- modify roles table of rolesetup addon
-	hook.Add("TTTAModifyRolesTable", "ModifyRoleSurvToInno", function(rolesTable)
-		for role in pairs(rolesTable) do
-			if role == ROLES.SURVIVALIST.index then
-				roles[ROLE_INNOCENT] = roles[ROLE_INNOCENT] + roles[ROLES.SURVIVALIST.index]
-			end
-		end
-	end)
 end
 
 -- nothing special, just a inno that is able to access the [C] shop
