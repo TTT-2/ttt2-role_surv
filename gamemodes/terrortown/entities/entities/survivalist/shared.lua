@@ -13,9 +13,7 @@ hook.Add("Initialize", "TTT2InitCRoleSurv", function()
 		dkcolor = Color(255, 105, 51, 255), -- ...
 		bgcolor = Color(255, 165, 0, 200), -- ...
 		name = "survivalist", -- just a unique name for the script to determine
-		printName = "Survivalist", -- The text that is printed to the player, e.g. in role alert
 		abbr = "surv", -- abbreviation
-		shop = true, -- can the role access the [C] shop ? -> credits should be set
 		team = TEAM_INNO, -- the team name: roles with same team name are working together
 		defaultEquipment = SPECIAL_EQUIPMENT, -- here you can set up your own default equipment
 		radarColor = Color(150, 150, 150), -- color if someone is using the radar
