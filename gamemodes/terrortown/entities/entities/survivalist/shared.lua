@@ -4,32 +4,30 @@ if SERVER then
 	resource.AddFile("materials/vgui/ttt/dynamic/roles/icon_surv.vmt")
 end
 
--- important to add roles with this function,
--- because it does more than just access the array ! e.g. updating other arrays
-InitCustomRole("SURVIVALIST", { -- first param is access for ROLES array => ROLES["SURVIVALIST"] or SURVIVALIST
-		color = Color(80, 140, 90, 255), -- ...
-		dkcolor = Color(29, 94, 40, 255), -- ...
-		bgcolor = Color(183, 111, 105, 255), -- ...
-		abbr = "surv", -- abbreviation
-		defaultTeam = TEAM_INNOCENT, -- the team name: roles with same team name are working together
-		defaultEquipment = SPECIAL_EQUIPMENT, -- here you can set up your own default equipment
-		radarColor = Color(150, 150, 150), -- color if someone is using the radar
-		surviveBonus = 0, -- bonus multiplier for every survive while another player was killed
-		scoreKillsMultiplier = 1, -- multiplier for kill of player of another team
-		scoreTeamKillsMultiplier = -8, -- multiplier for teamkill
-		unknownTeam = true -- player don't know their teammates
-	}, {
-		pct = 0.15, -- necessary: percentage of getting this role selected (per player)
-		maximum = 2, -- maximum amount of roles in a round
-		minPlayers = 7, -- minimum amount of players until this role is able to get selected
-		credits = 1, -- the starting credits of a specific role
-		togglable = true, -- option to toggle a role for a client if possible (F1 menu)
-		shopFallback = SHOP_FALLBACK_DETECTIVE
-})
+ROLE.color = Color(80, 140, 90, 255) -- ...
+ROLE.dkcolor = Color(29, 94, 40, 255) -- ...
+ROLE.bgcolor = Color(183, 111, 105, 255) -- ...
+ROLE.abbr = "surv" -- abbreviation
+ROLE.defaultTeam = TEAM_INNOCENT -- the team name: roles with same team name are working together
+ROLE.defaultEquipment = SPECIAL_EQUIPMENT -- here you can set up your own default equipment
+ROLE.radarColor = Color(150, 150, 150) -- color if someone is using the radar
+ROLE.surviveBonus = 0 -- bonus multiplier for every survive while another player was killed
+ROLE.scoreKillsMultiplier = 1 -- multiplier for kill of player of another team
+ROLE.scoreTeamKillsMultiplier = -8 -- multiplier for teamkill
+ROLE.unknownTeam = true -- player don't know their teammates
+
+ROLE.conVarData = {
+	pct = 0.15, -- necessary: percentage of getting this role selected (per player)
+	maximum = 2, -- maximum amount of roles in a round
+	minPlayers = 7, -- minimum amount of players until this role is able to get selected
+	credits = 1, -- the starting credits of a specific role
+	togglable = true, -- option to toggle a role for a client if possible (F1 menu)
+	shopFallback = SHOP_FALLBACK_DETECTIVE
+}
 
 -- now link this subrole with its baserole
 hook.Add("TTT2BaseRoleInit", "TTT2ConBRIWithSurv", function()
-	SetBaseRole(SURVIVALIST, ROLE_INNOCENT)
+	SURVIVALIST:SetBaseRole(ROLE_INNOCENT)
 end)
 
 if CLIENT then
