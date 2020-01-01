@@ -5,16 +5,15 @@ if SERVER then
 end
 
 function ROLE:PreInitialize()
-	self.color = Color(80, 140, 90, 255) -- ...
-	self.dkcolor = Color(29, 94, 40, 255) -- ...
-	self.bgcolor = Color(183, 111, 105, 255) -- ...
+	self.color = Color(80, 140, 90, 255)
+
 	self.abbr = "surv" -- abbreviation
 	self.radarColor = Color(150, 150, 150) -- color if someone is using the radar
 	self.surviveBonus = 0 -- bonus multiplier for every survive while another player was killed
 	self.scoreKillsMultiplier = 1 -- multiplier for kill of player of another team
 	self.scoreTeamKillsMultiplier = -8 -- multiplier for teamkill
 	self.unknownTeam = true -- player don't know their teammates
-	
+
 	self.defaultTeam = TEAM_INNOCENT -- the team name: roles with same team name are working together
 	self.defaultEquipment = SPECIAL_EQUIPMENT -- here you can set up your own default equipment
 
@@ -32,8 +31,7 @@ function ROLE:Initialize()
 	roles.SetBaseRole(self, ROLE_INNOCENT)
 
 	if CLIENT then
-		-- setup here is not necessary but if you want to access the role data, you need to start here
-		-- setup basic translation !
+		-- Role specific language elements
 		LANG.AddToLanguage("English", self.name, "Survivalist")
 		LANG.AddToLanguage("English", "info_popup_" .. self.name,
 			[[You are a Survivalist!
@@ -42,11 +40,8 @@ function ROLE:Initialize()
 		LANG.AddToLanguage("English", "search_role_" .. self.abbr, "This person was a Survivalist!")
 		LANG.AddToLanguage("English", "target_" .. self.name, "Survivalist")
 		LANG.AddToLanguage("English", "ttt2_desc_" .. self.name, [[The Survivalist is a better innocent, because he is able to access his own ([C]) shop.
-	Try to protect the innocents!]])
+Try to protect the innocents!]])
 
-		---------------------------------
-
-		-- maybe this language as well...
 		LANG.AddToLanguage("Deutsch", self.name, "Überlebender")
 		LANG.AddToLanguage("Deutsch", "info_popup_" .. self.name,
 			[[Du bist ein Überlebender!
@@ -55,8 +50,6 @@ function ROLE:Initialize()
 		LANG.AddToLanguage("Deutsch", "search_role_" .. self.abbr, "Diese Person war ein Überlebender!")
 		LANG.AddToLanguage("Deutsch", "target_" .. self.name, "Überlebender")
 		LANG.AddToLanguage("Deutsch", "ttt2_desc_" .. self.name, [[Der Überlebender ist ein besserer Unschuldiger (oder sogar ein besserer Detektiv), denn er hat seinen eigenen ([C]) Shop.
-	Versuche, die Unschuldigen zu beschützen!]])
+Versuche, die Unschuldigen zu beschützen!]])
 	end
 end
-
--- nothing special, just a inno that is able to access the [C] shop
