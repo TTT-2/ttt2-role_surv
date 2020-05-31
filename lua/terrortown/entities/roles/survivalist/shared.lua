@@ -29,27 +29,4 @@ end
 
 function ROLE:Initialize()
 	roles.SetBaseRole(self, ROLE_INNOCENT)
-
-	if CLIENT then
-		-- Role specific language elements
-		LANG.AddToLanguage("English", self.name, "Survivalist")
-		LANG.AddToLanguage("English", "info_popup_" .. self.name,
-			[[You are a Survivalist!
-				Try to survive and protect your mates if possible!]])
-		LANG.AddToLanguage("English", "body_found_" .. self.abbr, "This was a Survivalist...")
-		LANG.AddToLanguage("English", "search_role_" .. self.abbr, "This person was a Survivalist!")
-		LANG.AddToLanguage("English", "target_" .. self.name, "Survivalist")
-		LANG.AddToLanguage("English", "ttt2_desc_" .. self.name, [[The Survivalist is a better innocent, because he is able to access his own ([C]) shop.
-Try to protect the innocents!]])
-
-		LANG.AddToLanguage("Deutsch", self.name, "Überlebender")
-		LANG.AddToLanguage("Deutsch", "info_popup_" .. self.name,
-			[[Du bist ein Überlebender!
-				Versuche zu überleben und beschütze dein Team, wenn es möglich sein sollte!]])
-		LANG.AddToLanguage("Deutsch", "body_found_" .. self.abbr, "Er war ein Überlebender...")
-		LANG.AddToLanguage("Deutsch", "search_role_" .. self.abbr, "Diese Person war ein Überlebender!")
-		LANG.AddToLanguage("Deutsch", "target_" .. self.name, "Überlebender")
-		LANG.AddToLanguage("Deutsch", "ttt2_desc_" .. self.name, [[Der Überlebender ist ein besserer Unschuldiger (oder sogar ein besserer Detektiv), denn er hat seinen eigenen ([C]) Shop.
-Versuche, die Unschuldigen zu beschützen!]])
-	end
 end
