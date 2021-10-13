@@ -12,6 +12,8 @@ function ROLE:PreInitialize()
 	self.score.teamKillsMultiplier = -8
 	self.unknownTeam = true
 
+	self.isPolicingRole = true
+
 	self.defaultTeam = TEAM_INNOCENT
 	self.defaultEquipment = SPECIAL_EQUIPMENT
 
@@ -19,7 +21,12 @@ function ROLE:PreInitialize()
 		pct = 0.15,
 		maximum = 2,
 		minPlayers = 7,
+		minKarma = 400,
+
 		credits = 1,
+		creditsAwardDeadEnable = 1,
+		creditsAwardKillEnable = 0,
+
 		togglable = true,
 		shopFallback = SHOP_FALLBACK_DETECTIVE
 	}
